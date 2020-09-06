@@ -74,7 +74,7 @@ public class MainActivity2 extends AppCompatActivity {
                 imageView10, imageView11, imageView12};
 
         highScoreText = findViewById(R.id.highScoreText);
-        //buradaki name isimlerini aynı verdiğimiz zaman depolanan verilerin degeri eşit oluyor...
+        
         sharedPreferences = this.getSharedPreferences("data1", Context.MODE_PRIVATE);
         sharedPreferences2 = this.getSharedPreferences("data2", Context.MODE_PRIVATE);
         sharedPreferences3= this.getSharedPreferences("data3", Context.MODE_PRIVATE);
@@ -111,8 +111,7 @@ public class MainActivity2 extends AppCompatActivity {
         }
 
 
-//        score = sharedPreferences.getInt("highScore", 0);
-  //      highScoreText.setText("High Score: " + score);
+
 
         hideImages();
 
@@ -124,8 +123,7 @@ public class MainActivity2 extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-               // System.out.println("milisecond: "+time);;
-                timeText.setText("Time Off Halil:(");
+                timeText.setText("Time Off:(");
                 //System.out.println(number);
 
                 if (Long.parseLong(time)==1000){
@@ -188,17 +186,7 @@ public class MainActivity2 extends AppCompatActivity {
                 }
 
 
-    /*
-
-                if (score < number) {
-                    score = number;
-                    highScoreText.setText("High Score : " + score);
-                    sharedPreferences.edit().putInt("highScore", score).apply();
-
-
-                }
-    */
-                //handlerin calısmasını durdurmak için  yapıyoruz...
+  
                 handler.removeCallbacks(runnable);
                 for (ImageView image : imageArray) {
                     image.setVisibility(View.INVISIBLE);
@@ -211,9 +199,6 @@ public class MainActivity2 extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = getIntent();
-                        //tıpkı bir aktiviteden baska bir aktiviteye geçerken ki gibi
-                        // burdada restart yaptıgımız zaman kendi aktivitemizi tekrar acanken intent kullanıyoruz..
-                        //sistemi yormamak için ilk ilk acılan activity i kapatıp tekrar acıyoruz...
                         finish();
                         startActivity(intent);
                     }
@@ -252,7 +237,6 @@ public class MainActivity2 extends AppCompatActivity {
                 Random random = new Random();
                 int i = random.nextInt(12);
                 imageArray[i].setVisibility(View.VISIBLE);
-                //parametre olarak thşs vermemizin sebebi runnable in içinde olmamız . runnable da yazabiliriz...
                 handler.postDelayed(this,Long.parseLong(time));
             }
         };
